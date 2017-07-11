@@ -3,7 +3,13 @@ require "capistrano/setup"
 
 # Include default deployment tasks
 require "capistrano/deploy"
+Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
 
+require "capistrano3/unicorn"
+require "capistrano/rvm"
+require "Capistrano/bundler"
+require "Capistrano/rails/assets"
+require "Capistrano/rails/migrations"
 # Load the SCM plugin appropriate to your project:
 #
 # require "capistrano/scm/hg"

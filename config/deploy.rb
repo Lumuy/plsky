@@ -4,6 +4,26 @@ lock "3.8.2"
 set :application, "plsky"
 set :repo_url, "https://github.com/Lumuy/plsky.git"
 
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
+
+  task :restart do
+    invoke 'unicorn:legacy_restart'
+  end
+
+end
+
+
+set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn.rb") }
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
