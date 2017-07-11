@@ -1,19 +1,34 @@
-app_path = File.expand_path( File.join(File.dirname(__FILE__), '..', '..'))
-worker_processes   1
-timeout            180
-listen             "#{app_path}/shared/tmp/sockets/unicorn.sock"
-pid                "#{app_path}/shared/tmp/pids/unicorn.pid"
-stderr_path        "log/unicorn.log"
-stdout_path        "log/unicorn.log"
+app_path = "/var/www/plsky"
+working_directory "#{app_path}/current"
+pid               "#{app_path}/current/tmp/pids/unicorn.pid"
+
+# listen
+listen "/tmp/unicorn-www.plsky.cc.socket", :backlog => 64
+
+# logging
+stderr_path "log/unicorn.stderr.log"
+stdout_path "log/unicorn.stdout.log"
+
+# workers
+worker_processes 3
+
+# use correct Gemfile on restarts
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
+end
 
 # preload
 preload_app true
 
 before_fork do |server, worker|
+  # the following is highly recomended for Rails + "preload_app true"
+  # as there's no need for the master process to hold a connection
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.connection.disconnect!
   end
 
+  # Before forking, kill the master process that belongs to the .oldbin PID.
+  # This enables 0 downtime deploys.
   old_pid = "#{server.config[:pid]}.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
@@ -28,8 +43,4 @@ after_fork do |server, worker|
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.establish_connection
   end
-end
-
-before_exec do |server| # 修正无缝重启unicorn后更新的Gem未生效的问题，原因是config/boot.rb会优先从ENV中获取BUNDLE_GEMFILE，而无缝重启时ENV['BUNDLE_GEMFILE']的值并未被清除，仍指向旧目录的Gemfile
-  ENV["BUNDLE_GEMFILE"] = "#{app_path}/current/Gemfile"
 end
