@@ -1,9 +1,10 @@
 app_path = "/var/www/plsky"
 working_directory "#{app_path}/current"
-pid               "#{app_path}/current/tmp/pids/unicorn.pid"
+pid               "#{app_path}/tmp/pids/unicorn.pid"
 
 # listen
-listen "/tmp/unicorn-www.plsky.cc.socket", :backlog => 64
+listen "/tmp/unicorn.socket", :backlog => 64
+listen 4096, :tcp_nopush => false
 
 # logging
 stderr_path "log/unicorn.stderr.log"
