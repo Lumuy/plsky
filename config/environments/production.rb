@@ -18,7 +18,7 @@ Rails.application.configure do
   # Requires an encryption key in `ENV["RAILS_MASTER_KEY"]` or
   # `config/secrets.yml.key`.
   config.read_encrypted_secrets = true
-  config.secret_key_base = ENV['SECRET_KEY_BASE']
+  config.secret_key_base = 'eea1315d641a00c9736588e6d508e0e6e407f59df535f0d8ed0db25a67538eae33abd52f723811b5c40d512f328b63d939dc26130c69caa1997f0bb30dcb48e3'
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
