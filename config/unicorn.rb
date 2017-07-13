@@ -3,7 +3,7 @@ working_directory "#{app_path}/current"
 pid               "#{app_path}/tmp/pids/unicorn.pid"
 
 # listen
-listen "/tmp/unicorn.socket", :backlog => 64
+listen "#{app_path}/tmp/sockets/unicorn.socket", :backlog => 64
 listen 4096, :tcp_nopush => false
 
 # logging
@@ -11,7 +11,9 @@ stderr_path "log/unicorn.stderr.log"
 stdout_path "log/unicorn.stdout.log"
 
 # workers
-worker_processes 3
+worker_processes 1
+
+timeout 180
 
 # use correct Gemfile on restarts
 before_exec do |server|
