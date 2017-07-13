@@ -221,7 +221,7 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
-  bootstrap-sass
+  bootstrap-sass (~> 3.3.6)
   byebug
   capistrano (~> 3.8)
   capistrano-bundler
