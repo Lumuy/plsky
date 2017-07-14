@@ -1,6 +1,6 @@
 app_path = "/var/www/plsky"
 working_directory "#{app_path}/current"
-pid               "#{app_path}/tmp/pids/unicorn.pid"
+pid               "#{app_path}/shared/tmp/pids/unicorn.pid"
 
 # listen
 listen "#{app_path}/tmp/sockets/unicorn.socket", :backlog => 64
