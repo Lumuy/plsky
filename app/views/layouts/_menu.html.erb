@@ -9,6 +9,7 @@
           <a href='/' class='navbar-brand'><b>pl</b>sky</a>
         </div>
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
+          <%= yield :header %>
           <%= render "shared/navbar" %>
         </div>
         <%= render "shared/usernav" %>
