@@ -20,6 +20,8 @@ module Plsky
 
     config.autoload_paths += %W[#{Rails.root}/lib]
 
+    config.i18n.default_locale = :"zh-CN"
+
     config.generators do |generator|
       generator.assets false
       generator.test_framework false
