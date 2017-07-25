@@ -96,6 +96,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
+    address: "smtpcloud.sohu.com",
     port: 1025,
     authentication: "login",
     enable_starttls_auto: true,
