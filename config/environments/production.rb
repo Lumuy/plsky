@@ -97,7 +97,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address: "smtpcloud.sohu.com",
-    port: 1025,
+    port: 25,
+    domain: "plsky.cc"
     authentication: "login",
     enable_starttls_auto: true,
     user_name: ENV["SEND_CLOUD_USER_NAME"],
