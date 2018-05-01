@@ -18,3 +18,4 @@
 //= require bootstrap-sprockets
 
 //= require resume
+//= require header
