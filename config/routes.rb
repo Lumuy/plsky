@@ -3,10 +3,6 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    confirmation: "users/confirmations"
-  }
   root 'welcome#index'
 
   get '/resume', to: 'welcome#resume'
