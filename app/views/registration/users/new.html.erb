@@ -1,27 +1,40 @@
-<h1>Sign Up</h1>
+<div class="container-fluid signupbox">
+  <h1><b calss="text-primary">Pl</b>sky</h1>
 
-<%= form_for @user, url: users_path, method: :post do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <%= form_for @user, url: users_path, method: :post do |f| %>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% for message in @user.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= fa_icon "mobile", class: "fa-fw" %>
+      <%= f.text_field :phone_number, class: "form-control", placeholder: "请输入手机号" %>
+    </div>
+    <div class="form-group">
+      <%= fa_icon "lock", class: "fa-fw" %>
+      <%= f.password_field :password, class: "form-control", placeholder: "请输入密码"   %>
+    </div>
+    <div class="form-group">
+      <%= fa_icon "lock", class: "fa-fw" %>
+      <%= f.password_field :password_confirmation, class: "form-control", placeholder: "请确认密码"  %>
+    </div>
+    <div class="validate-phone-number">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+      </div>
+    </div>
+    <div class="login-submit">
+      <%= f.submit "注册", class: "btn btn-primary" %>
     </div>
   <% end %>
-  <p>
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p class="button"><%= f.submit %></p>
-<% end %>
+
+</div>

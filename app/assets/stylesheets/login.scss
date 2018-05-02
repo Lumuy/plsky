@@ -1,0 +1,41 @@
+.signupbox
+{
+  margin: 20px auto;
+  padding: 20px;
+  width: 300px;
+  background-color: $gray-color;
+  border-radius: 12px;
+}
+
+.signupbox h1
+{
+  font-size: 23px;
+  margin: 10;
+  text-align: center;
+  padding: 10px 0 30px 0;
+}
+
+.signupbox .form-group input
+{
+  margin: 10px auto;
+  wdith: 100%;
+  background-color: $dark-color;
+}
+
+.signupbox .form-group input:hover
+{
+  background-color: $gray-color;
+}
+
+.signupbox .validate-phone-number
+{
+  margin: 10px auto;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.login-submit
+{
+  padding-top: 10px;
+  text-align: center;
+}
