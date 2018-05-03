@@ -31,10 +31,8 @@ gem 'capistrano-rvm'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 
-gem 'devise'
-gem 'devise-i18n'
-
-gem 'bcrypt', '~> 3.1', '>= 3.1.11'
+gem 'rucaptcha'
+gem 'bcrypt', '~> 3.1.7'
 
 gem 'rest-client', '~> 2.0'
 gem 'turbolinks', '~> 5.0.0'

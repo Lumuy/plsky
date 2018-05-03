@@ -5,8 +5,8 @@ class Registration::UsersController < ApplicationController
 
   def create
     @user = Registration::User.new(user_params)
-    if @user.save
-      redirect_to root_url, :notice => "Signed up"
+    if verify_rucaptcha? @user, keep_session: true && @user.save
+      redirect_to root_url, :notice => "注册成功"
     else
       render "new"
     end
