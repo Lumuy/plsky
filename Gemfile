@@ -34,11 +34,10 @@ gem 'capistrano-rails'
 gem 'devise'
 gem 'devise-i18n'
 
-# send email
-gem 'letter_opener_web'
-gem 'figaro'
-
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
+
+gem 'rest-client', '~> 2.0'
+gem 'turbolinks', '~> 5.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

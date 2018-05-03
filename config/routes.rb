@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get '/resume', to: 'welcome#resume'
+  match 'sms_verify', to: 'sms_verify#verify', via: :post
 
   scope :registration do
     get 'log_out', to: 'registration/sessions#destroy', as: 'log_out'

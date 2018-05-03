@@ -14,7 +14,7 @@
     <% end %>
     <div class="form-group">
       <%= fa_icon "mobile", class: "fa-fw" %>
-      <%= f.text_field :phone_number, class: "form-control", placeholder: "请输入手机号" %>
+      <%= f.text_field :phone_number, class: "form-control", placeholder: "请输入手机号", id: "sms-phnum" %>
     </div>
     <div class="form-group">
       <%= fa_icon "lock", class: "fa-fw" %>
@@ -26,9 +26,9 @@
     </div>
     <div class="validate-phone-number">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <%= text_field_tag "vcode", nil, class: "form-control", id: "sms-vcode" %>
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">Button</button>
+          <%= button_tag "获取验证码", class: 'btn btn-outline-secondary', id: 'sms-verify', type: "button" %>
         </div>
       </div>
     </div>
