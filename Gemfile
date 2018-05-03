@@ -31,6 +31,7 @@ gem 'capistrano-rvm'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 
+gem 'dalli'
 gem 'rucaptcha'
 gem 'bcrypt', '~> 3.1.7'
 
