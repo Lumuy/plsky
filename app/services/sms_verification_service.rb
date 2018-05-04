@@ -10,7 +10,6 @@ class SmsVerificationService
 
   SendSmsUrl = "https://sms.yunpian.com/v2/sms/single_send.json"
   ContentUrl  = "https://sms.yunpian.com/v2/tpl/get.json"
-  Content = "【玉逍遥】您的验证码是#{@vcode.to_i}"
 
   def get_content
     begin
@@ -22,10 +21,13 @@ class SmsVerificationService
   end
 
   def send_sms
+    content = "【玉逍遥】您的验证码是#{@vcode}"
+    p content
+    p @vcode
     send_param = {
       "apikey": ApiKey,
-      "mobile": @phnum.to_s,
-      "text": Content
+      "mobile": @phnum,
+      "text": content
     }
     response = RestClient.post SendSmsUrl, send_param
   end
