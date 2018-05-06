@@ -1,6 +1,6 @@
 .signupbox
 {
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 20px;
   width: 300px;
   background-color: $gray-color;
@@ -12,7 +12,7 @@
   font-size: 23px;
   margin: 10;
   text-align: center;
-  padding: 10px 0 30px 0;
+  padding: 10px 0 10px 0;
 }
 
 .signupbox .form-group input
@@ -39,8 +39,36 @@
   }
 }
 
-.login-submit
-{
+.login-submit {
   padding-top: 10px;
   text-align: center;
+
+  button {
+    width: 40px;
+  }
+}
+
+// verify style
+.signupbox .validate-phone-number button:disabled {
+  border: 1px solid $vrfy-border-color;
+  background-color: $vrfy-bg-color;
+  color: $vrfy-text-color;
+}
+
+// signup error style
+.signupbox .error_messages
+{
+  font-size: 12px;
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  ul li {
+    font-size: 12px;
+    white-space: nowrap;
+    list-style: none;
+    text-decoration: none;
+  }
 }

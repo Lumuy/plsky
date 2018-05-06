@@ -1,0 +1,7 @@
+zh-CN:
+  activerecord:
+    attributes:
+      registration/user:
+        phone_number: '手机号'
+        password: '密码'
+        password_confirmation: '确认密码'
