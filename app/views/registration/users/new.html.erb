@@ -15,28 +15,41 @@
     <% end %>
     <div class="form-group">
       <%= fa_icon "mobile", class: "fa-fw" %>
-      <%= f.text_field :phone_number, class: "form-control", placeholder: "请输入手机号", id: "sms-phnum" %>
+      <%= f.text_field :phone_number, class: "form-control",
+                                      placeholder: "请输入手机号",
+                                      id: "sms-phnum" %>
     </div>
     <div class="form-group">
       <%= fa_icon "lock", class: "fa-fw" %>
-      <%= f.password_field :password, class: "form-control", placeholder: "请输入密码"   %>
+      <%= f.password_field :password, class: "form-control",
+                                      placeholder: "请输入密码"   %>
     </div>
     <div class="form-group">
       <%= fa_icon "lock", class: "fa-fw" %>
-      <%= f.password_field :password_confirmation, class: "form-control", placeholder: "请确认密码"  %>
+      <%= f.password_field :password_confirmation, class: "form-control",
+                                                   placeholder: "请确认密码"  %>
     </div>
     <div class="validate-phone-number">
+      <div class="form-group">
+        <%= rucaptcha_input_tag(class: 'form-control cap-style',
+                                placeholder: '输入图片码',
+                                id: 'img-cap-content') %>
+        <a class='rucaptcha_image_box' href="#">
+          <%= rucaptcha_image_tag(alt: '验证码，点击刷新') %>
+        </a>
+      </div>
       <div class="input-group mb-3">
-        <%= text_field_tag "vcode", nil, class: "form-control", id: "sms-vcode" %>
+        <%= text_field_tag "vcode", nil, class: "form-control cap-style",
+                                         id: "sms-vcode" %>
         <div class="input-group-append">
-          <%= button_tag "获取验证码", class: 'btn btn-outline-secondary', id: 'sms-verify', type: "button" %>
+          <%= button_tag "手机验证码", class: 'btn btn-outline-secondary',
+                                     id: 'sms-verify',
+                                     type: "button",
+                                     disabled: true %>
         </div>
       </div>
     </div>
-    <div class="form-group">
-      <%= rucaptcha_input_tag(class: 'form-control', placeholder: '输入图片码') %>
-      <%= rucaptcha_image_tag(alt: '验证码，点击刷新') %>
-    </div>
+
     <div class="login-submit">
       <%= f.submit "注册", class: "btn btn-outline-secondary" %>
     </div>

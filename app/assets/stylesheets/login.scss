@@ -19,12 +19,7 @@
 {
   margin: 10px auto;
   wdith: 100%;
-  background-color: $dark-color;
-}
-
-.signupbox .form-group input:hover
-{
-  background-color: $gray-color;
+  background-color: $usr-bg-color;
 }
 
 .signupbox .validate-phone-number
@@ -53,6 +48,15 @@
   border: 1px solid $vrfy-border-color;
   background-color: $vrfy-bg-color;
   color: $vrfy-text-color;
+}
+
+.signupbox .validate-phone-number .cap-style {
+  background-color: $cap-bg-color;
+}
+
+.signupbox .rucaptcha_image_box img {
+  width: 100%;
+  height: fit-content;
 }
 
 // signup error style

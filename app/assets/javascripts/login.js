@@ -29,7 +29,29 @@ function ajaxPost(){
   });
 };
 
+function imgCapPost() {
+  $.ajax({
+    url: '/registration/img_verify',
+    type: "POST",
+    data: {
+      "_rucaptcha": $('#img-cap-content').val(),
+    },
+    dataType: 'json',
+    success: function(data){
+      $('#sms-verify').prop('disabled', false);
+    },
+    error: function(data){
+    }
+  });
+};
+
 $(document).on('turbolinks:load', function(){
+  // 图片码自动检验
+  $('#img-cap-content').on('change',function(){
+    imgCapPost();
+  });
+
+  // 发送验证码
   $('#sms-verify').on('click', function(){
     var reg = /^\d{11}$/,
         pno = $("#sms-phnum").val();
@@ -56,5 +78,12 @@ $(document).on('turbolinks:load', function(){
       $('#err-msg').append('<li>无效的手机号码</li>');
     };
 
+  });
+
+  // 刷新图片码
+  $('.rucaptcha_image_box').on('click', function(){
+    img = $('.rucaptcha_image_box').find('img:first');
+    currentSrc = img.attr('src');
+    img.attr(currentSrc.split('?')[0] + '?' + (new Date()).getTime());
   });
 });
