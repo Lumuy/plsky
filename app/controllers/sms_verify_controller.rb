@@ -3,9 +3,10 @@ class SmsVerifyController < ApplicationController
 
   def verify
     @sv = SmsVerification.new(sms_verification_params)
-    if @sv.save
-      @sv.send_sms_verification
+    if @sv.save && @sv.send_sms_success
+      render json: nil, status: :ok
     else
+      head :bad_request
     end
   end
 

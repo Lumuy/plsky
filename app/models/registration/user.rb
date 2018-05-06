@@ -3,7 +3,7 @@ class Registration::User < ApplicationRecord
 
   before_save :encrpt_password
 
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, uniqueness: true
   validates :password, presence: true
   validates :phone_number, format: { with: /\A\d{11}\z/i }
   validates_confirmation_of :password

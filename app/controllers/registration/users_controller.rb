@@ -1,13 +1,13 @@
 class Registration::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :imgverify
-  
+
   def new
     @user = Registration::User.new
   end
 
   def create
     @user = Registration::User.new(user_params)
-    if verify_rucaptcha? @user, keep_session: true && @user.save
+    if phno_eql(@user) && @user.save
       redirect_to root_url, :notice => "注册成功"
     else
       flash[:notice] = "注册失败"
@@ -24,6 +24,16 @@ class Registration::UsersController < ApplicationController
   end
 
   private
+
+  def phno_eql user
+    phnos = SmsVerification.order(created_at: :desc)
+                           .where("phone_number = ?", user.phone_number)
+    if phnos.size
+      phnos.first.verification_code == params[:vcode]
+    else
+      false
+    end
+  end
 
   def user_params
     params.require(:registration_user).permit(:phone_number,

@@ -30,6 +30,7 @@ class SmsVerificationService
       "text": content
     }
     response = RestClient.post SendSmsUrl, send_param
+    response.code == 200
   end
 
 end
