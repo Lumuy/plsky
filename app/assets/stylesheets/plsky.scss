@@ -1,14 +1,96 @@
-.header {
-  position: fixed;
-}
-
 .site-footer {
   margin-top: 30px;
-  // position: absolute;
+  position: relative;
   width: 100%;
   bottom: 0;
   color: $footer-color;
   background-color: $footer-bg-color;
   padding: 20px;
   text-align: center;
+}
+
+// cutstom your own header
+header nav .logo {
+  position: fixed;
+  float: left;
+  margin: 16px 36px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+header nav {
+  position: fixed;
+  width: 100%;
+  background: $header-bg-color;
+  color: $header-color;
+}
+
+header nav ul {
+  list-style: none;
+  background: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  color: #fff;
+  padding: 0;
+  text-align: center;
+  margin: 0;
+  transition: 1s;
+}
+
+header nav.black ul {
+  background: #000;
+}
+
+header nav ul li {
+  display: inline-block;
+  padding: 20px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+}
+
+header .menu-icon {
+   width: 100%;
+   background: #000;
+   text-align: right;
+   box-sizing: border-box;
+   padding: 15px 24px;
+   cursor: pointer;
+   color: #fff;
+   display: none;
+}
+
+@media(max-width: 580px) {
+  header .logo {
+    position: fixed;
+    top: 0;
+    margin-top: 16px;
+  }
+
+  header nav ul {
+    max-height: 0px;
+    background: #000;
+  }
+
+  header nav.black ul {
+    background: #000;
+  }
+
+  header .showing {
+    max-height: 20em;
+  }
+
+  header nav ul li {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 24px 0;
+    text-align: center;
+  }
+
+  header .menu-icon {
+    display: block;
+  }
 }

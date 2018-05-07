@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'layouts/pheader' %>
 
     <div class="container">
       <% flash.each do |key, value| %>
@@ -19,8 +19,6 @@
         </div>
       <% end %>
     </div>
-
-    <%= yield :top_content %>
 
     <%= yield %>
 
