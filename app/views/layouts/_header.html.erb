@@ -1,15 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand mb-0 h1" href="#">Plsky</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <%= render "shared/navbar" %>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    </form>
-    <%= render "shared/usernav"%>
+<header class='site-header'>
+  <div class="sh-logo">
+    <a href="/"><b class="text-primary">Pl</b>sky</a>
   </div>
+  <div class="sh-mobile-ctrl">
+    <i class='fa fa-bars fa-2x'></i>
+  </div>
+  <div class="sh-search">
+    <form>
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      <button type="button" name="button" class="header-search-icon">
+        <i class="fa fa-search"></i>
+      </button>
+    </form>
+  </div>
+  <div class="sh-menu">
+    <ul>
+      <li><a href='#'>音乐</a></li>
+      <li><a href='#'>图片</a></li>
+      <li><a href='#'>资料</a></li>
+      <li><a href='#'>博客</a></li>
+    </ul>
+  </div>
+</header>
 
-</nav>
+<script type="text/javascript">
+
+</script>
