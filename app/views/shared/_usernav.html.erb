@@ -1,16 +1,24 @@
-<ul class='navbar-nav'>
-  <% if current_user %>
-    <li class="nav-item dropdown">
-      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="personalInfo">
-        <%= current_user.phone_number %>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="personalInfo">
-        <%= link_to '个人', '/resume', class: "dropdown-item" %>
-        <%= link_to '注销', log_out_path, class: "dropdown-item" %>
-      </ul>
-    </li>
-  <% else %>
-    <li><%= link_to '登陆', log_in_path %></li>
-    <li><%= link_to '注册', sign_up_path %></li>
-  <% end %>
-</ul>
+<div class="sn-menu">
+  <ul>
+    <% if current_user %>
+      <li><a href='#'>音乐</a></li>
+      <li><a href='#'>图片</a></li>
+      <li><a href='#'>资料</a></li>
+      <li class="shm-dropdown">
+        <a href='#'>
+          <%= fa_icon '', class: 'fas fa-ellipsis-h fa-lg', style: 'color:white' %>
+        </a>
+        <div class="shm-btn-dropdown" id='profile-dropdown'>
+          <ul>
+            <li><a href='#'>音乐</a></li>
+            <li><a href='#'>图片</a></li>
+            <li><a href='#'>资料</a></li>
+          </ul>
+        </div>
+      </li>
+    <% else %>
+      <li><%= link_to '登陆', log_in_path %></li>
+      <li><%= link_to '注册', sign_up_path %></li>
+    <% end %>
+  </ul>
+</div>

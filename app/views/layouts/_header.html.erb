@@ -14,30 +14,31 @@
       </button>
     </form>
   </div>
+  <!-- <%= render 'shared/usernav' %> -->
   <div class="sh-menu">
     <ul>
-      <li><a href='#'>音乐</a></li>
-      <li><a href='#'>图片</a></li>
-      <li><a href='#'>资料</a></li>
-      <li class="shm-dropdown">
-        <a href='#'>
-          <!-- <%= fa_icon 'fas fa-ellipsis-h', text: 'profiles' %> -->
-          <div>
-            <span class='icon-dot'></span>
-            <span class='icon-dot'></span>
-            <span class='icon-dot'></span>
+      <% if current_user %>
+        <li><a href='#'>音乐</a></li>
+        <li><a href='#'>图片</a></li>
+        <li><a href='#'>资料</a></li>
+        <li class="shm-dropdown">
+          <a href='#'>
+            <%= fa_icon '', class: 'fas fa-ellipsis-h fa-lg', style: 'color:white' %>
+          </a>
+          <div class="shm-btn-dropdown" id='profile-dropdown'>
+            <ul>
+              <li><a href='#'>音乐</a></li>
+              <li><a href='#'>图片</a></li>
+              <li><a href='#'>资料</a></li>
+            </ul>
           </div>
-          profiles
-        </a>
-        <div class="shm-btn-dropdown" id='profile-dropdown'>
-          <ul>
-            <li><a href='#'>音乐</a></li>
-            <li><a href='#'>图片</a></li>
-            <li><a href='#'>资料</a></li>
-          </ul>
-        </div>
-      </li>
+        </li>
+      <% else %>
+        <li><%= link_to '登陆', log_in_path %></li>
+        <li><%= link_to '注册', sign_up_path %></li>
+      <% end %>
     </ul>
+  </div>
   </div>
 </header>
 

@@ -6,15 +6,34 @@
 }
 
 .site-footer {
-  margin-top: 30px;
-  position: relative;
+  // margin-top: 30px;
   width: 100%;
   bottom: 0;
-  color: $footer-color;
-  background-color: $footer-bg-color;
+  color: $footer-bg-color;
+  background: $footer-color;
   padding: 20px;
   text-align: center;
+  vertical-align: middle;
 }
+html {
+  height: 100%;
+}
+
+.main-content {
+  min-height: 100%;
+  margin-bottom: -120px;
+}
+
+.main-content::after {
+  content: "";
+  display: block;
+}
+
+.site-footer, .main-content::after {
+  height: 120px;
+}
+
+
 
 // custom your header
 .site-header {
@@ -99,6 +118,10 @@
   text-decoration: none;
   cursor: pointer;
   color: #ddd;
+}
+
+.site-header .sh-menu ul li a:hover {
+  color: #fff;
 }
 
 .site-header .sh-search form {
@@ -248,7 +271,7 @@ span .icon-dot {
     position: absolute;
     content: "";
     margin-top: -8px;
-    left: 70%;
+    left: 80%;
     display: block;
     width: 0;
     height: 0;
@@ -256,4 +279,9 @@ span .icon-dot {
     border-right: 8px solid transparent;
     border-bottom: 8px solid #fff;
   }
+}
+
+// set search form background color
+.sh-search form input {
+  background: #555;
 }
