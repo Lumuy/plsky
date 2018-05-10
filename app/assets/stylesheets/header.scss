@@ -1,6 +1,6 @@
 .body-content {
   width: 90%;
-  margin: 100px auto;
+  margin: 70px auto;
   line-height: 30px;
   text-align: justify;
 }
@@ -21,7 +21,7 @@ html {
 
 .main-content {
   min-height: 100%;
-  margin-bottom: -120px;
+  margin-bottom: -60px;
 }
 
 .main-content::after {
@@ -30,7 +30,7 @@ html {
 }
 
 .site-footer, .main-content::after {
-  height: 120px;
+  height: 60px;
 }
 
 
@@ -54,6 +54,7 @@ html {
     margin-top: 0;
     margin-bottom: 0;
     margin-right: 20px;
+    width: 122px;
     height: 50px;
     font-weight: 800;
     font-size: 24px;

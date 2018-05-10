@@ -8,7 +8,7 @@ class Registration::SessionsController < ApplicationController
       session[:registration_user_id] = user.id
       redirect_to root_url, :notice => "Logged in"
     else
-      flash.now.alert = "Inlvaid phone number or password"
+      flash[:warning] = "无效的号码或错误密码"
       render "new"
     end
   end

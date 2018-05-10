@@ -9,23 +9,12 @@
 
 
 body {
-  // use for header
-  // margin-bottom: -255px;
-  padding-top: 50px;
+  // padding-top: 50px;
   overflow-x: hidden;
   overflow-y: scroll;
   width: 100%;
   height: 100%;
   background: #e9eaed;
-        // -webkit-background-size: cover; /* For WebKit*/
-        // -moz-background-size: cover;    /* Mozilla*/
-        // -o-background-size: cover;      /* Opera*/
-        // background-size: cover;         /* Generic*/
-        // background-repeat: no-repeat;
-        // // for IE 9, https://stackoverflow.com/questions/1150163/stretch-and-scale-a-css-image-in-the-background-with-css-only
-        // // filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/homeBg.jpg',     sizingMethod='scale');
-        // //   -ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/homeBg', sizingMethod='scale');
-        // background: url('https://images.pexels.com/photos/589841/pexels-photo-589841.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') no-repeat center center fixed;
   color: $black;
   font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
   letter-spacing: .03em;
