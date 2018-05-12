@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :get_post, only: [:edit, :show, :eidt]
+  before_action :get_post, only: [:edit, :show, :eidt, :update]
 
   def new
     @post = Post.new
@@ -23,7 +23,12 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.udpate(post_params)
+    if @post.update(post_params)
+      flash[:success] = '修改成功'
+      redirect_to post_path(@post)
+    else
+      flash[:info] = '修改失败'
+    end
   end
 
   def destroy
