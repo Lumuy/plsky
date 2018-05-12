@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get '/resume', to: 'home#resume'
+  get 'settings', to: 'settings#show'
   match 'sms_verify', to: 'sms_verify#verify', via: :post
+
+  resource :setting, only: [:update]
+  resources :posts, only: [:new, :create, :edit, :update, :destroy, :show] do
+    resources :comments, only: [:create, :update, :destroy, :edit]
+  end
 
   scope :registration do
     get 'log_out', to: 'registration/sessions#destroy', as: 'log_out'
@@ -11,10 +17,6 @@ Rails.application.routes.draw do
     match 'img_verify', to: 'registration/users#imgverify', via: :post
     match 'users', to: 'registration/users#create', via: :post
     match 'sessions', to: 'registration/sessions#create', via: :post
-  end
-
-  resources :posts, only: [:new, :create, :edit, :update, :destroy, :show] do
-    resources :comments, only: [:create, :update, :destroy, :edit]
   end
 
 

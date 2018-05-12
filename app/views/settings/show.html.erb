@@ -1,0 +1,86 @@
+<div class="settings-body">
+  <div class="row">
+    <div class="col-4">
+      <div class="list-group" id="list-tab" role="tablist">
+        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+          基本信息
+        </a>
+        <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
+          详细资料
+        </a>
+        <a class="list-group-item list-group-item-action" id="list-password-list" data-toggle="list" href="#list-password" role="tab" aria-controls="password">
+          上传头像
+        </a>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+          <div class="card">
+            <div class="card-header">
+               手机号
+            </div>
+            <div class="card-body">
+              <p class='text-info'><%= @user.phone_number %></p>
+            </div>
+          </div>
+          <div class='space'></div>
+          <%= form_for @user, url: setting_path do |f| %>
+            <div class="card">
+              <div class="card-header">
+                密码
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <%= f.text_field :password, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="card-footer">
+                <%= f.submit '更改密码', class: 'btn btn-sm btn-info' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+          <%= form_for @user, url: setting_path, method: :put do |f| %>
+            <div class="card">
+              <div class="card-body">
+                <div class="form-group">
+                  <%= label_tag '用户名' %>
+                  <%= f.text_field :name, class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                  <%= label_tag '邮件' %>
+                  <%= f.text_field :email, class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                  <%= label_tag '签名' %>
+                  <%= f.text_field :signature, class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                  <%= label_tag '头像' %>
+                </div>
+              </div>
+              <div class="card-footer">
+                <%= f.submit '更新资料', class: 'btn btn-info btn-sm' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="list-password" role="tabpanel" aria-labelledby="list-password-list">
+          <div class="card">
+            <div class="card-body">
+              <%= form_for @user, url: setting_path do |f| %>
+                <%= f.file_field :avatar %>
+              <% end %>
+            </div>
+            <div class="card-footer">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
