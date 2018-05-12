@@ -1,5 +1,6 @@
-class WelcomeController < ApplicationController
+class HomeController < ApplicationController
   def index
+    @post = Post.all
   end
 
   def resume

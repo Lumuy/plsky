@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  root 'welcome#index'
-  get '/resume', to: 'welcome#resume'
+  root 'home#index'
+  get '/resume', to: 'home#resume'
   match 'sms_verify', to: 'sms_verify#verify', via: :post
 
   scope :registration do
@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     match 'users', to: 'registration/users#create', via: :post
     match 'sessions', to: 'registration/sessions#create', via: :post
   end
+
+  resources :posts, only: [:new, :create, :edit, :update, :destroy, :show] do
+    resources :comments, only: [:create, :update, :destroy, :edit]
+  end
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

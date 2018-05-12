@@ -1,0 +1,7 @@
+<% cache comment do %>
+  <div class="alert alert-info" role="alert">
+    <%= comment.body %>
+    <%= link_to 'edit', edit_post_comment_path(post, comment), class: 'btn btn-primary btn-sm' %>
+    <%= link_to 'delete', post_comment_path(post, comment), method: :delete, class: 'btn btn-primary btn-sm' %>
+  </div>
+<% end %>

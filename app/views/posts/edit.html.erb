@@ -1,0 +1,16 @@
+<div class="body-content">
+  <%= form_for @post, url: edit_post_path do |f| %>
+    <div class="card">
+      <div class="card-header">
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="card-body">
+        <%= f.text_area :content, class: 'form-control', rows: 10 %>
+      </div>
+      <div class="card-footer">
+        <%= f.submit '保存', class: 'btn btn-info' %>
+        <%= link_to '删除', post_path(@post), method: :delete, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  <% end %>
+</div>

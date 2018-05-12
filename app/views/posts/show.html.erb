@@ -1,0 +1,52 @@
+<div class="body-content">
+  <div class="row">
+    <div class="col-9">
+      <div class="card">
+        <div class="card-header">
+          <b><%= @post.title %></b>
+          <br />
+          <p class='text-primary'>创建于<%= timego(@post.created_at) %></p>
+        </div>
+        <div class="card-body">
+          <%= @post.content %>
+        </div>
+        <div class="card-footer">
+          <%= link_to '编辑', edit_post_path(@post), class: 'btn btn-primary' %>
+          <%= link_to '删除', post_path(@post), method: :delete, class: 'btn btn-danger' %>
+        </div>
+      </div>
+
+      <div class="space"></div>
+      <div class="card">
+        <div class="card-header">
+            共计<%= @comments.count %>评论
+        </div>
+        <div class="card-body">
+          <% if @comments.present? %>
+
+            <%= render partial: 'comments/comment', collection: @comments, locals: { post: @post } %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="space"></div>
+      <div class="card">
+        <div class="card-header">
+          创建评论
+        </div>
+        <div class="card-body">
+          <%= form_for [@post, @reply], methohd: :post do |reply| %>
+            <%= reply.text_area :body, class:'form-control', rows: 5 %>
+            <%= reply.submit '提交评论', class: 'btn btn-info' %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-3">
+      <div class="text-center">
+        <%= image_tag 'profile.gif', class: 'rounded', width: '100%' %>
+      </div>
+    </div>
+  </div>
+</div>

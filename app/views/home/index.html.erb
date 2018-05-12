@@ -1,0 +1,17 @@
+<div class="body-content">
+  <div class="row">
+    <div class="col-9">
+      <% @post.each do |post| %>
+        <div class="alert alert-success" role="alert">
+          <%= link_to post.title, post_path(post) %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-3">
+      <%= link_to '发布新主题', new_post_path, class: 'btn btn-primary btn-lg btn-block'%>
+      <div class="text-center">
+        <%= image_tag 'profile.gif', class: 'rounded', width: '100%' %>
+      </div>
+    </div>
+  </div>
+</div>
