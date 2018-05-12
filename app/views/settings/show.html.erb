@@ -69,14 +69,15 @@
         </div>
         <div class="tab-pane fade" id="list-password" role="tabpanel" aria-labelledby="list-password-list">
           <div class="card">
-            <div class="card-body">
-              <%= form_for @user, url: setting_path do |f| %>
+            <%= form_for @user, url: setting_path, html: { mutilpart: true } do |f| %>
+              <div class="card-body">
+                <%= image_tag @user.avatar if @user.avatar? %>
                 <%= f.file_field :avatar %>
-              <% end %>
-            </div>
-            <div class="card-footer">
-
-            </div>
+              </div>
+              <div class="card-footer">
+                <%= f.submit '保存', class: 'btn btn-info btn-sm' %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
