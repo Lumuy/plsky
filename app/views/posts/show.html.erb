@@ -9,7 +9,7 @@
         <div class="card-body">
           <%= @post.content %>
         </div>
-        <% if @post.registration_user_id == current_user.id %>
+        <% if current_user && @post.registration_user_id == current_user.id %>
           <div class="card-footer">
             <span class="pull-right">
               <%= link_to edit_post_path(@post) do %>
@@ -42,21 +42,27 @@
       </div>
 
       <div class="space"></div>
-      <div class="card">
-        <div class="card-header">
-            <div class="pl-mention">回复</div>
-        </div>
-        <%= form_for [@post, @reply], methohd: :post do |reply| %>
-          <div class="form-comment">
-            <div class="form-group">
-              <%= reply.text_area :body, class:'form-control', rows: 2 %>
-            </div>
-            <div class="form-group">
-              <%= reply.submit '提交评论', class: 'btn btn-info btn-sm' %>
-            </div>
+      <% if current_user %>
+        <div class="card">
+          <div class="card-header">
+              <div class="pl-mention">回复</div>
           </div>
-         <% end %>
-      </div>
+          <%= form_for [@post, @reply], methohd: :post do |reply| %>
+            <div class="form-comment">
+              <div class="form-group">
+                <%= reply.text_area :body, class:'form-control', rows: 2 %>
+              </div>
+              <div class="form-group">
+                <%= reply.submit '提交评论', class: 'btn btn-info btn-sm' %>
+              </div>
+            </div>
+           <% end %>
+        </div>
+      <% else %>
+        <div class="alert alert-dark" role="alert">
+          未登陆用户无法评论
+        </div>
+      <% end %>
 
     </div>
     <div class="col-3">

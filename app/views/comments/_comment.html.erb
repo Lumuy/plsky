@@ -1,7 +1,9 @@
 <% cache comment do %>
   <div class="pl-comment">
     <!-- get user who commented at this post -->
-    <% commentor = Registration::User.find(post.registration_user_id) %>
+    <%
+    commentor = Registration::User.find(post.registration_user_id)
+    %>
     <div class="pl-comment-content">
       <div class="pl-comment-avatar">
         <%= image_tag commentor.avatar, class: 'rounded-circle' if commentor.present? %>
@@ -14,6 +16,7 @@
       </div>
     </div>
     <div class="pl-comment-buttons">
+      <% if current_user && commentor == current_user %>
         <span class="pull-right">
           <%= link_to edit_post_comment_path(post, comment) do %>
             <%= fa_icon 'edit', style: 'padding-right: 20px;' %>
@@ -22,6 +25,7 @@
             <%= fa_icon 'close'  %>
           <% end %>
         </span>
+      <% end %>
     </div>
   </div>
 <% end %>

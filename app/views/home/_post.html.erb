@@ -1,23 +1,29 @@
-<% user = Registration::User.find(post.registration_user_id) if post.registration_user_id.present? %>
+<% cache post do %>
+  <%
+  user = Registration::User.find(post.registration_user_id) if post.present?
+  post_comments = Comment.where('post_id = ?', post.id)
+  %>
 
-<div class="post-card">
-  <div class="pc-img">
-    <%= image_tag user.avatar, class: 'rounded-circle' %>
-  </div>
-  <div class="pc-detail">
-    <div class="pc-body">
-      <%= link_to post.title, post_path(post), class: 'pc-link' %>
+  <div class="post-card">
+    <div class="pc-img">
+      <%= image_tag user.avatar, class: 'rounded-circle' %>
     </div>
-    <div class="pc-info">
-      <b><%= user.name if user.name.present? %></b>
-      <div class="pc-uptonow"><%= model_time_interval(post) %></div>
+    <div class="pc-detail">
+      <div class="pc-body">
+        <%= link_to post.title, post_path(post), class: 'pc-link' %>
+      </div>
+      <div class="pc-info">
+        <b><%= user.name if user.name.present? %></b>
+        <div class="pc-uptonow"><%= model_time_interval(post) %></div>
+      </div>
+    </div>
+    <div class="pc-actions">
+      <div class="pc-btn">
+        <button class="upvote"><%= fa_icon 'chevron-up', class: 'fa-xs' %></button>
+        <button class="dowvote"><%= fa_icon 'chevron-down', class: 'fa-xs' %></button>
+      </div>
+      <div class="pc-comments"><a href="#"><%= post_comments.count %>条评论</a></div>
     </div>
   </div>
-  <div class="pc-actions">
-    <div class="pc-btn">
-      <button class="upvote"><%= fa_icon 'chevron-up', class: 'fa-xs' %></button>
-      <button class="dowvote"><%= fa_icon 'chevron-down', class: 'fa-xs' %></button>
-    </div>
-    <div class="pc-comments"><a href="#"><% post.comments.count %>条评论</a></div>
-  </div>
-</div>
+
+<% end %>
