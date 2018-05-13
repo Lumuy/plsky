@@ -7,7 +7,8 @@ module Registration
       user = Registration::User.authenticate(params[:phone_number], params[:password])
       if user
         session[:registration_user_id] = user.id
-        redirect_to root_url, :notice => "Logged in"
+        flash[:success] = '登陆成功'
+        redirect_to root_url
       else
         flash[:warning] = "无效的号码或错误密码"
         render "new"
@@ -16,7 +17,8 @@ module Registration
 
     def destroy
       session[:registration_user_id] = nil
-      redirect_to root_url, :notice => "Logged out"
+      flash[:light] = '成功注销'
+      redirect_to root_url
     end
 
     private

@@ -12,8 +12,8 @@
   <body>
     <%= render 'layouts/header' %>
 
-    <div class="main-content">
-      <div class="container-fluid">
+    <% if flash.present? %>
+      <div class="pl-notification">
         <% flash.each do |key, value| %>
           <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
             <%= value %>
@@ -21,13 +21,12 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <% end %>
+        <% end %>
       </div>
+    <% end %>
 
-      <%= yield %>
-    </div>
+    <%= yield %>
 
-    <%= render 'layouts/footer' %>
   </body>
 
 </html>
