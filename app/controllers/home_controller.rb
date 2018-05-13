@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @post = Post.order(created_at: :desc).all
+    @posts = Post.order(created_at: :desc).all
   end
 
   def resume

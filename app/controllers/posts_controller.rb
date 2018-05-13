@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :get_post, only: [:edit, :show, :eidt, :update]
+  before_action :set_user
+  before_action :get_post, only: [:edit, :show, :eidt, :update, :destroy]
 
   def new
     @post = Post.new
@@ -7,6 +8,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.registration_user_id = @user.id
     if @post.save
       redirect_to root_path
     else
@@ -32,9 +34,20 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    if @post.destroy
+      redirect_to root_path
+      flash[:success] = '删除成功'
+    else
+      flash[:success] = '删除失败'
+      render 'show'
+    end
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
 
   def get_post
     @post = Post.find(params[:id])

@@ -1,16 +1,18 @@
 <div class="body-content">
   <div class="row">
-    <div class="col-9">
-      <% @post.each do |post| %>
-        <div class="alert alert-success" role="alert">
-          <%= link_to post.title, post_path(post) %>
-        </div>
-      <% end %>
+    <div class="col-10">
+      <div class="post-card-container">
+        <% @posts.each do |post| %>
+          <%= render partial: 'home/post', locals: { post: post } %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-3">
-      <%= link_to '发布新主题', new_post_path, class: 'btn btn-primary btn-lg btn-block'%>
+    <div class="col-2 container">
+      <div class="space"></div>
+      <%= link_to '发布新主题', new_post_path, class: 'pbtn-primary'%>
+      <div class="space"></div>
       <div class="text-center">
-        <%= image_tag 'profile.gif', class: 'rounded', width: '100%' %>
+        <%= image_tag 'pljiwuxia.jpg', class: 'rounded', width: '100%' %>
       </div>
     </div>
   </div>

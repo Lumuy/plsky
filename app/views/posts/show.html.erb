@@ -3,49 +3,65 @@
     <div class="col-9">
       <div class="card">
         <div class="card-header">
-          <b><%= @post.title %></b>
-          <br />
-          <p class='text-primary'>创建于<%= timego(@post.created_at) %></p>
+          <div class="pl-title"><%= @post.title %></div>
+          <div class="pl-title-addons">创建于<%= timego(@post.created_at) %></div>
         </div>
         <div class="card-body">
           <%= @post.content %>
         </div>
-        <div class="card-footer">
-          <%= link_to '编辑', edit_post_path(@post), class: 'btn btn-primary' %>
-          <%= link_to '删除', post_path(@post), method: :delete, class: 'btn btn-danger' %>
-        </div>
+        <% if @post.registration_user_id == current_user.id %>
+          <div class="card-footer">
+            <span class="pull-right">
+              <%= link_to edit_post_path(@post) do %>
+                <%= fa_icon 'edit', class: 'fa-lg', style: 'padding-right: 20px' %>
+              <% end %>
+              <%= link_to post_path(@post), method: :delete do %>
+                <%= fa_icon 'close', class: 'fa-lg' %>
+              <% end %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="space"></div>
+      <div class="card">
+        <% if @comments.count > 0 %>
+          <div class="card-header">
+              <div class="pl-mention">共计<%= @comments.count %>评论</div>
+          </div>
+          <div class="card-body">
+            <% if @comments.present? %>
+              <%= render partial: 'comments/comment', collection: @comments, locals: { post: @post, user: @user } %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="card-header">
+              <div class="pl-mention">暂无评论</div>
+          </div>
+        <% end %>
       </div>
 
       <div class="space"></div>
       <div class="card">
         <div class="card-header">
-            共计<%= @comments.count %>评论
+            <div class="pl-mention">回复</div>
         </div>
-        <div class="card-body">
-          <% if @comments.present? %>
-
-            <%= render partial: 'comments/comment', collection: @comments, locals: { post: @post } %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="space"></div>
-      <div class="card">
-        <div class="card-header">
-          创建评论
-        </div>
-        <div class="card-body">
-          <%= form_for [@post, @reply], methohd: :post do |reply| %>
-            <%= reply.text_area :body, class:'form-control', rows: 5 %>
-            <%= reply.submit '提交评论', class: 'btn btn-info' %>
-          <% end %>
-        </div>
+        <%= form_for [@post, @reply], methohd: :post do |reply| %>
+          <div class="form-comment">
+            <div class="form-group">
+              <%= reply.text_area :body, class:'form-control', rows: 2 %>
+            </div>
+            <div class="form-group">
+              <%= reply.submit '提交评论', class: 'btn btn-info btn-sm' %>
+            </div>
+          </div>
+         <% end %>
       </div>
 
     </div>
     <div class="col-3">
       <div class="text-center">
-        <%= image_tag 'profile.gif', class: 'rounded', width: '100%' %>
+        <%= image_tag 'pljiwuxia.jpg', class: 'rounded', width: '100%' %>
       </div>
     </div>
   </div>

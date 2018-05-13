@@ -1,7 +1,27 @@
 <% cache comment do %>
-  <div class="alert alert-info" role="alert">
-    <%= comment.body %>
-    <%= link_to 'edit', edit_post_comment_path(post, comment), class: 'btn btn-primary btn-sm' %>
-    <%= link_to 'delete', post_comment_path(post, comment), method: :delete, class: 'btn btn-primary btn-sm' %>
+  <div class="pl-comment">
+    <!-- get user who commented at this post -->
+    <% commentor = Registration::User.find(post.registration_user_id) %>
+    <div class="pl-comment-content">
+      <div class="pl-comment-avatar">
+        <%= image_tag commentor.avatar, class: 'rounded-circle' if commentor.present? %>
+      </div>
+      <div class="pl-comment-body">
+        <div class="pl-cusername">
+          <b><%= commentor.name %></b>    <%= model_time_interval(comment) %>
+        </div>
+        <%= comment.body %>
+      </div>
+    </div>
+    <div class="pl-comment-buttons">
+        <span class="pull-right">
+          <%= link_to edit_post_comment_path(post, comment) do %>
+            <%= fa_icon 'edit', style: 'padding-right: 20px;' %>
+          <% end %>
+          <%= link_to post_comment_path(post, comment), method: :delete do %>
+            <%= fa_icon 'close'  %>
+          <% end %>
+        </span>
+    </div>
   </div>
 <% end %>
