@@ -40,6 +40,7 @@ gem 'turbolinks', '~> 5.0.0'
 
 # 上传组件
 gem 'carrierwave'
+# 图片处理
 gem 'mini_magick'
 
 # 邮件发送
@@ -47,6 +48,14 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'letter_opener_web'
 gem 'figaro'
+
+# 富文本编辑器
+gem 'simditor'
+
+# converting Markdown to HTML
+# syntax highlighting
+gem 'redcarpet'
+gem 'coderay'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -71,7 +80,6 @@ group :development do
 
   gem 'capistrano', '~> 3.8'
   gem 'capistrano3-unicorn'
-  gem 'capistrano-rvm'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

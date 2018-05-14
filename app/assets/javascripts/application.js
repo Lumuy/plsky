@@ -16,6 +16,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require simditor
 
 //= require resume
 //= require login

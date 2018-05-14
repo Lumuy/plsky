@@ -225,6 +225,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redcarpet (3.4.0)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -282,6 +283,7 @@ GEM
     selenium-webdriver (3.12.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    simditor (2.3.6)
     spoon (0.0.6)
       ffi
     spring (2.0.2)
@@ -354,6 +356,7 @@ DEPENDENCIES
   capistrano3-unicorn
   capybara (~> 2.13)
   carrierwave
+  coderay
   coffee-rails (~> 4.2)
   dalli
   database_cleaner (~> 1.5.3)
@@ -370,11 +373,13 @@ DEPENDENCIES
   pry-rails
   rails (~> 5.1.2)
   rails-controller-testing
+  redcarpet
   rest-client (~> 2.0)
   rspec-rails (~> 3.5)
   rucaptcha
   sass-rails (~> 5.0)
   selenium-webdriver
+  simditor
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5.0.0)

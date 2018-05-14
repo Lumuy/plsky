@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/resume', to: 'home#resume'
   get 'settings', to: 'settings#show'
+  post '/upload', to: 'photos#upload'
   match 'sms_verify', to: 'sms_verify#verify', via: :post
 
   resource :setting, only: [:update]
