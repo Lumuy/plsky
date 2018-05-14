@@ -9,7 +9,7 @@
 server "www.plsky.cc", user: "root", roles: %w{app db web}
 set :rails_env, "production"
 set :stage, :production
-
+set :branch, "dev"
 
 
 # role-based syntax
