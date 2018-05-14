@@ -1,16 +1,23 @@
-<div class="body-content">
-  <%= form_for @post, url: post_path, method: :put do |f| %>
-    <div class="card">
-      <div class="card-header">
-        <%= f.text_field :title, class: 'form-control' %>
-      </div>
-      <div class="card-body">
-        <%= f.text_area :content, class: 'form-control', rows: 10 %>
-      </div>
-      <div class="card-footer">
-        <%= f.submit '保存', class: 'btn btn-info' %>
-        <%= link_to '删除', post_path(@post), method: :delete, class: 'btn btn-danger' %>
-      </div>
+<%= form_for @post, url: post_path, method: :put do |f| %>
+  <div class="card">
+    <div class="card-header">
+      <%= f.text_field :title, class: 'form-control' %>
     </div>
-  <% end %>
-</div>
+    <div class="card-body">
+      <%= f.text_area :content, class: 'form-control', rows: 10, id: 'edit_post' %>
+    </div>
+    <div class="card-footer">
+      <%= f.submit '保存', class: 'btn btn-info' %>
+      <%= link_to '删除', post_path(@post), method: :delete, class: 'btn btn-danger' %>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  var editor = new Simditor({
+          textarea: $('#edit_post'),
+          pasteImage: true,
+          defaultImage: '<%= image_path "upload-loading.png" %>',
+          upload: {url: '/upload'}
+      });
+</script>

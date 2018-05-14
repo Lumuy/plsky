@@ -12,7 +12,7 @@
         <div class="pl-cusername">
           <b><%= commentor.name %></b>    <%= model_time_interval(comment) %>
         </div>
-        <%= comment.body %>
+        <%= comment.body.html_safe %>
       </div>
     </div>
     <div class="pl-comment-buttons">

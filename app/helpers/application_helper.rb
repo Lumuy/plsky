@@ -5,26 +5,26 @@ module ApplicationHelper
   end
 
   def uptonow(time)
-    now = Time.now
-    years = now.year - time.year
-    months = now.month - time.month
-    days = now.day - time.day
-    hours = now.hour - time.hour
+    now     = Time.now
+    years   = now.year - time.year
+    months  = now.month - time.month
+    days    = now.day - time.day
+    hours   = now.hour - time.hour
     minutes = now.min - time.min
     seconds = now.sec - time.sec
 
     if years > 0
-      years.to_s + '年前'
+      years.to_s    + '年前'
     elsif months > 0
-      months.to_s + '月前'
+      months.to_s   + '月前'
     elsif days > 0
-      days.to_s + '天前'
+      days.to_s     + '天前'
     elsif hours > 0
-      hours.to_s + '小时前'
+      hours.to_s    + '小时前'
     elsif minutes > 0
-      minutes.to_s + '分钟前'
+      minutes.to_s  + '分钟前'
     else
-      seconds.to_s + '秒前'
+      seconds.to_s  + '秒前'
     end
   end
 
@@ -34,6 +34,29 @@ module ApplicationHelper
     else
       '发布于' + uptonow(model.created_at)
     end
+  end
+
+  def markdown(text)
+    options = {
+      prettify:             true,
+      hard_wrap:            true,
+      link_attributes:      { rel: 'nofollow', target: "_blank" },
+      space_after_headers:  true,
+      fenced_code_blocks:   true
+    }
+
+    extensions = {
+      highlight:          true,
+      autolink:           true,
+      superscript:        true,
+      disable_indented_code_blocks: true,
+      fenced_code_blocks: true
+    }
+
+    renderer = Redcarpet::Render::HTML.new(options)
+    markdown = Redcarpet::Markdown.new(renderer, extensions)
+
+    markdown.render(text).html_safe
   end
 
 end

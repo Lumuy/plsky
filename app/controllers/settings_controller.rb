@@ -8,10 +8,10 @@ class SettingsController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = '更新资料成功'
-      render 'show'
     else
       flash[:info] = '更新资料失败'
     end
+    redirect_to settings_path
   end
 
   private
