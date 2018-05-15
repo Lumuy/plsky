@@ -24,7 +24,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     # For Rails 3.1+ asset pipeline compatibility:
     # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
 
-    ActionController::Base.helpers.asset_path("/images/") + [version_name, "profile.gif"].compact.join('_')
+    ActionController::Base.helpers.asset_path("/images/") + [version_name, "cv.png"].compact.join('_')
   end
 
   # Process files as they are uploaded:
@@ -47,7 +47,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # unique name
+  # unique image file name
   def filename
     "#{secure_token}.#{file.extension}" if original_filename.present?
   end
