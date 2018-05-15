@@ -1,31 +1,30 @@
-<% cache comment do %>
-  <div class="pl-comment">
-    <!-- get user who commented at this post -->
-    <%
-    commentor = Registration::User.find(post.registration_user_id)
-    %>
-    <div class="pl-comment-content">
-      <div class="pl-comment-avatar">
-        <%= image_tag commentor.avatar_url, class: 'rounded-circle' if commentor.present? %>
-      </div>
-      <div class="pl-comment-body">
-        <div class="pl-cusername">
-          <b><%= commentor.name %></b>    <%= model_time_interval(comment) %>
-        </div>
-        <%= comment.body.html_safe %>
-      </div>
+<!-- get user who commented at this post -->
+<%
+commentor = Registration::User.find(post.registration_user_id)
+%>
+
+<div class="pl-comment">
+  <div class="pl-comment-content">
+    <div class="pl-comment-avatar">
+      <%= image_tag commentor.avatar_url, class: 'rounded-circle' if commentor.present? %>
     </div>
-    <div class="pl-comment-buttons">
-      <% if current_user && commentor && commentor.id == current_user.id %>
-        <span class="pull-right">
-          <%= link_to edit_post_comment_path(post, comment) do %>
-            <%= fa_icon 'edit', style: 'padding-right: 20px;' %>
-          <% end %>
-          <%= link_to post_comment_path(post, comment), method: :delete do %>
-            <%= fa_icon 'close'  %>
-          <% end %>
-        </span>
-      <% end %>
+    <div class="pl-comment-body">
+      <div class="pl-cusername">
+        <b><%= commentor.name %></b>    <%= model_time_interval(comment) %>
+      </div>
+      <%= comment.body.html_safe %>
     </div>
   </div>
-<% end %>
+  <div class="pl-comment-buttons">
+    <% if current_user && commentor && commentor.id == current_user.id %>
+      <span class="pull-right">
+        <%= link_to edit_post_comment_path(post, comment) do %>
+          <%= fa_icon 'edit', style: 'padding-right: 20px;' %>
+        <% end %>
+        <%= link_to post_comment_path(post, comment), method: :delete do %>
+          <%= fa_icon 'close'  %>
+        <% end %>
+      </span>
+    <% end %>
+  </div>
+</div>
