@@ -18,9 +18,9 @@
   <div class="sh-menu">
     <ul>
       <% if current_user %>
-        <li><a href='#'>音乐</a></li>
+        <li><%= link_to '设置', settings_path %></li>
         <li><a href='#'>图片</a></li>
-        <li><a href='#'>资料</a></li>
+        <li><a href='#'>音乐</a></li>
         <li class="shm-dropdown">
           <a href='#'>
             <%= fa_icon '', class: 'fas fa-ellipsis-h fa-lg', style: 'color:white' %>

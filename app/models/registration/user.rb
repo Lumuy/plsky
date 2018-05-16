@@ -12,11 +12,11 @@ module Registration
     PHONE_NUMBER_REGEXP        = /\A[1-9]\d{10}\z/
     EMAIL_REGEXP               = /\A[a-z\d\-\_\.]+@[a-z\.]+\.[a-z]+\z/i
 
-    validates :phone_number, presence: true, uniqueness: true
     validates :password,     presence: true
-    validates :phone_number, format: { with: PHONE_NUMBER_REGEXP },
-                             presence: true
-    validates :email,        format: { with: EMAIL_REGEXP }
+    validates :phone_number, presence: true,
+                             uniqueness: true,
+                             format: { with: PHONE_NUMBER_REGEXP }
+    validates :email,        format: { with: EMAIL_REGEXP, on: :create }
     validates_confirmation_of :password
 
     mount_uploader :avatar, AvatarUploader
