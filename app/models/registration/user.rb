@@ -16,7 +16,7 @@ module Registration
     validates :phone_number, presence: true,
                              uniqueness: true,
                              format: { with: PHONE_NUMBER_REGEXP }
-    validates :email,        format: { with: EMAIL_REGEXP, on: :create }
+    # validates :email,        format: { with: EMAIL_REGEXP, on: :create }
     validates_confirmation_of :password
 
     mount_uploader :avatar, AvatarUploader
