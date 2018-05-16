@@ -18,8 +18,9 @@
 
 .byebug_history
 
-public/assets/
-public/uploads/
+/public/assets/
+/public/uploads/
+!/public/uploads/default.png
 
 # Ignore application configuration
 # /config/application.yml
