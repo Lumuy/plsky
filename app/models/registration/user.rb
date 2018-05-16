@@ -1,15 +1,22 @@
 module Registration
   class User < ApplicationRecord
-    has_many :posts, dependent: :destroy
-    has_many :comments, dependent: :destroy
+    has_many :posts,      dependent: :destroy
+    has_many :comments,   dependent: :destroy
 
     attr_accessor :password_confirmation
 
     before_save :encrpt_password
 
+    USER_NAME_FORMAT           = 'A-Za-z0-9\-\_\.'
+    USER_NAME_FORMAT_REGEXP    = /\A[#{USER_NAME_FORMAT}]*\z/
+    PHONE_NUMBER_REGEXP        = /\A[1-9]\d{10}\z/
+    EMAIL_REGEXP               = /\A[a-z\d\-\_\.]+@[a-z\.]+\.[a-z]+\z/i
+
     validates :phone_number, presence: true, uniqueness: true
-    validates :password, presence: true
-    validates :phone_number, format: { with: /\A\d{11}\z/i }
+    validates :password,     presence: true
+    validates :phone_number, format: { with: PHONE_NUMBER_REGEXP },
+                             presence: true
+    validates :email,        format: { with: EMAIL_REGEXP }
     validates_confirmation_of :password
 
     mount_uploader :avatar, AvatarUploader
