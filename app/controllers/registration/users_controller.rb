@@ -9,9 +9,10 @@ module Registration
     def create
       @user = User.new(user_params)
       if phno_eql(@user) && @user.save
-        redirect_to root_url, :notice => "注册成功"
+        flash[:success] = "注册成功"
+        redirect_to root_url
       else
-        flash[:notice] = "注册失败"
+        flash[:info] = "注册失败"
         render "new"
       end
     end
