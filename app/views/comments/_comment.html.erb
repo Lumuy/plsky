@@ -6,7 +6,7 @@ commentor = Registration::User.find(comment.registration_user_id)
 <div class="pl-comment">
   <div class="pl-comment-content">
     <div class="pl-comment-avatar">
-      <%= image_tag commentor.avatar_url, class: 'rounded-circle' if commentor.present? %>
+      <%= image_tag commentor.avatar_url.sub(/\/public/, ''), class: 'rounded-circle' if commentor.present? %>
     </div>
     <div class="pl-comment-body">
       <div class="pl-cusername">
