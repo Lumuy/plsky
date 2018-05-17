@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe Registration::User, type: :model do
-  let(:user) { create :user }
 
   describe "phone number" do
     context "is not 11" do

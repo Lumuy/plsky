@@ -13,10 +13,12 @@ module Registration
     EMAIL_REGEXP               = /\A[a-z\d\-\_\.]+@[a-z\.]+\.[a-z]+\z/i
 
     validates :password,     presence: true
+    validates :name,         uniqueness: true
     validates :phone_number, presence: true,
                              uniqueness: true,
                              format: { with: PHONE_NUMBER_REGEXP }
-    validates :email,        allow_nil: true, 
+    validates :email,        allow_nil: true,
+                             uniqueness: true,
                              format: { with: EMAIL_REGEXP, on: :create }
     validates_confirmation_of :password
 
