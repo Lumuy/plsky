@@ -1,0 +1,19 @@
+<div class='container'>
+  <h5 class="text-center m-4 p-4">二维码</h5>
+
+  <div class="container mx-auto">
+    <table class="mx-auto">
+      <% @qr.modules.each_index do |x| -%>
+        <tr>
+          <% @qr.modules.each_index do |y| -%>
+            <% if @qr.dark?(x,y) -%>
+              <td class="black"/>
+            <% else -%>
+              <td class="white"/>
+            <% end -%>
+          <% end -%>
+        </tr>
+      <% end -%>
+    </table>
+  </div>
+</div>
