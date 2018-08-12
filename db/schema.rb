@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514125147) do
+ActiveRecord::Schema.define(version: 20180812113052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 20180514125147) do
     t.string "verification_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ss_confs", force: :cascade do |t|
+    t.string "host"
+    t.integer "port"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "registration_users_id"
+    t.index ["registration_users_id"], name: "index_ss_confs_on_registration_users_id"
   end
 
 end
