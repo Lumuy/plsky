@@ -25,6 +25,9 @@ set :branch, "dev"
 # role :db,  %w{deploy@example.com}
 
 
+# shared files
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
+append :linked_files, 'config/database.yml', 'config/secrets.yml'
 
 # Configuration
 # =============
