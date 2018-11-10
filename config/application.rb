@@ -26,7 +26,7 @@ module Plsky
 
     config.generators do |generator|
       generator.assets false
-      generator.test_framework false
+      generator.test_framework :rspec
       generator.skip_routes true
     end
   end
