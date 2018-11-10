@@ -1,7 +1,7 @@
 require 'base64'
 
 class SsConf < ApplicationRecord
-  belongs_to :user, class_name: 'Registration::User', foreign_key: 'registration_user_id', optional: true
+  belongs_to :user, class_name: 'User', foreign_key: 'registration_user_id', optional: true
 
   validates :port, numericality: { only_integer: true,
                                    greater_than_or_equal_to: 1,

@@ -3,5 +3,5 @@ class Comment < ApplicationRecord
                    allow_blank: true
 
   belongs_to :post
-  belongs_to :registration_user, class_name: 'Registration::User'
+  belongs_to :user, class_name: 'User'
 end

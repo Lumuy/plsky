@@ -1,5 +1,5 @@
 <%
-  user = Registration::User.find(post.registration_user_id) if post.present?
+  user = User.find(post.registration_user_id) if post.present?
   comments = Comment.where('post_id = ?', post.id)
 %>
 

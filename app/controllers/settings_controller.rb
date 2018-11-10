@@ -21,7 +21,7 @@ class SettingsController < ApplicationController
   end
 
   def user_params
-    params.require(:registration_user).permit(:name, :password, :email, :avatar, :signature)
+    params.require(:user).permit(:name, :password, :email, :avatar, :signature)
   end
 
   def authenticate_user!

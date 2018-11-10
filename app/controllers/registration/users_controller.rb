@@ -38,9 +38,9 @@ module Registration
     end
 
     def user_params
-      params.require(:registration_user).permit(:phone_number,
-                                                :password,
-                                                :password_confirmation)
+      params.require(:user).permit(:phone_number,
+                                   :password,
+                                   :password_confirmation)
     end
   end
 
